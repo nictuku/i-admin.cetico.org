@@ -22,3 +22,4 @@ This technique I am now using, which I read is used in some RBL providers, requi
 Also, deploying it in other servers would be very easy, differently from DSPAM, which could be a pain for new sysadmins.  
   
 I won't discuss it further because there isn't anybody reading anyway. This is for historic record :-)
+
