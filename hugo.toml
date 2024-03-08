@@ -1,6 +1,6 @@
-baseURL = "https://blog.cetico.org/"
+baseURL = "https://i-admin.cetico.org/"
 languageCode = "en-us"
-title = "cetico.org"
+title = "Yves Junqueira's blog"
 theme="archie"
 copyright = "© Yves Junqueira"
 # Code Highlight
@@ -14,7 +14,7 @@ paginate=3 # articles per page
 
 [services]
   [services.googleAnalytics]
-    ID = 'G-YHFCQF5CLD'
+    ID = 'G-HHK1CKJGSH'
 
 [params]
 	mode="light" # color-mode → light,dark,toggle or auto
