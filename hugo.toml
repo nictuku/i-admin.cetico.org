@@ -35,9 +35,9 @@ name = "Twitter"
 icon = "twitter"
 url = "https://twitter.com/cetico/"
 [[params.social]]
-name = "Twitter"
-icon = "twitter"
-url = "https://twitter.com/cetico/"
+name = "LinkedIn"
+icon = "linkedin"
+url = "https://www.linkedin.com/in/yvesjunqueira/"
 
 
 # Main menu Items
