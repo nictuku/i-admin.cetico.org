@@ -70,3 +70,5 @@ A nice feature is that you can choose for how long you want the file to be store
 
   
 In short, if you are looking for a good free image hosting service, go check [imageshack.us](http://www.imageshack.us). If you need to host other type of files, [bighosting.net](http://www.bighosting.net) is the best choice, ATM.
+# Archived Comments
+
