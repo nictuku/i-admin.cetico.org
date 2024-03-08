@@ -16,3 +16,10 @@ I bought an HTC Magic a few weeks ago. One of the its coolest thing is the sheer
 \- [NewsRob](http://newsrob.com), a Google Reader client (suggested by Cesar from [Pinguis Moveis](http://pinguinsmoveis.blogspot.com))  
   
 Soon I'll hopefully expand this list with an I app I wrote myself, but I've been very lazy lately, so who knows.
+# Archived Comments
+
+#### Nice one.
+[Paul Jackman](http://www.websitetrade.com/ "noreply@blogger.com") - <time datetime="2012-03-16T02:38:48.919-07:00">Mar 5, 2012</time>
+
+Nice one.
+<hr />

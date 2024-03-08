@@ -18,3 +18,6 @@ I'm a happy consumer of Internet services. Besides buying products from Amazon, 
 *   [rimuhosting.com](http://rimuhosting.com/) offers Linux virtual private servers. I've been a customer for a long time and worked for them as a Linux tech guy for about a year. Their prices are a bit high but their support really kick-ass. If you are afraid you might brake your system during an upgrade and need some help to fix it, or may get stuck setting up a mail server, RimuHosting is for you.
 
 I'll add more stuff to this list as I remember about them.
+# Archived Comments
+
+

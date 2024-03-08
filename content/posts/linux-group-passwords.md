@@ -18,3 +18,10 @@ If you see this at webmin for example, you can safely ignore this option. For mo
   
 
 [http://tldp.org/HOWTO/Shadow-Password-HOWTO-7.html](http://tldp.org/HOWTO/Shadow-Password-HOWTO-7.html)
+# Archived Comments
+
+#### You can use "gpasswd" for assigning grou...
+[Unknown](https://www.blogger.com/profile/12439686807839605824 "noreply@blogger.com") - <time datetime="2012-11-30T01:14:16.586-08:00">Nov 5, 2012</time>
+
+You can use "gpasswd" for assigning group password,more detail use man page "man gpasswd".
+<hr />

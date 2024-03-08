@@ -38,3 +38,9 @@ Obviously this is a security no-no, but one should have the freedom to do whatev
 Seriously, Ubuntu disabled that for a reason. It's bad to log in as root using plain http authentication. In some cases, though, the web interface is required.  
   
 In my home server I don't run X, so I can't use the gnome cups control panel. Also, in general network servers, you could use an ssh tunnel to login to the cups interface. In that case, I suggest you to keep 127.0.0.1 as the only listening interface, for better security.
+# Archived Comments
+
+#### **THANK YOU!!!**
+[Anonymous]( "noreply@blogger.com") - <time datetime="2008-02-11T10:38:00.000-08:00">Feb 1, 2008</time>
+
+**THANK YOU!!!**

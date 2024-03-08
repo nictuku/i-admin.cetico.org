@@ -67,3 +67,5 @@ I hope it works for you. It worked for me. See also the gist [here](https://gist
 $ wget https://gist.githubusercontent.com/nictuku/13afc808571e742d3b1aaa0310ee8a8d/raw/d41ac5c7e1eb0c030a67b7bdaab69981217f46ed/scaleway-virtualbox-module-build.sh
 
 ```Let me know how it goes. Have fun!
+# Archived Comments
+

@@ -44,3 +44,27 @@ Para pegar o Suriproxy, [siga este link](http://www.cetico.org/suriproxy-0.13.ta
 Muito obrigado a todos pelo interesse :-).  
   
 UPDATE: código do [Suriproxy](http://github.com/nictuku/suriproxy) no github, caso seja útil pra alguém.
+# Archived Comments
+
+#### Boa Tarde.  
+  
+prazer Fabiano, estive visitando...
+[Anonymous]( "noreply@blogger.com") - <time datetime="2007-06-18T10:09:00.000-07:00">Jun 1, 2007</time>
+
+Boa Tarde.  
+  
+prazer Fabiano, estive visitando o blog, e achei massa pra caramba hein.  
+Parabéns pelo blog.  
+  
+gostaria de manter um contato com vc, quero obter umas dicas, vi que vc é fera.  
+  
+entre em contato comigo  
+  
+proenca\_11@hotmail.com  
+  
+e passe me seu e-mail pra gente poder se comunicar.  
+  
+abraço  
+  
+Fabiano
+<hr />

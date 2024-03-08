@@ -10,3 +10,20 @@ url: /2005/06/tdbvarcachesambaprintingtdb.html
 If you find something like this in your logs, and you can't print, just remove the file and restart samba.  
   
 Visit my sponsors if you find this information and their ads useful hehe.
+# Archived Comments
+
+#### Worked for me.
+[Anonymous]( "noreply@blogger.com") - <time datetime="2006-08-01T13:29:00.000-07:00">Aug 2, 2006</time>
+
+Worked for me.
+<hr />
+#### Worked for me to, thanks :)  
+(be sure te restart...
+[Anonymous]( "noreply@blogger.com") - <time datetime="2008-08-28T07:53:00.000-07:00">Aug 4, 2008</time>
+
+Worked for me to, thanks :)  
+(be sure te restart samba after the delete:  
+/etc/init.d/smb restart  
+)
+<hr />
+

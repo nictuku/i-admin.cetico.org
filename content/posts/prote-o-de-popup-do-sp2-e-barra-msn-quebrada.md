@@ -20,3 +20,6 @@ Veja o ingênuo, mas poderoso, currículo do Sr. Liu, um pouco desatualizado:
 Muito curioso! Há pouco tempo ele estava querendo um computador, porque nem tinha um pra trabalhar: [http://seclists.org/lists/isn/2003/Nov/0073.html](http://seclists.org/lists/isn/2003/Nov/0073.html)  
   
 Um cara a se admirar!
+# Archived Comments
+
+
