@@ -16,29 +16,29 @@ I thought I would write about the perspective of an SRE, framework developer and
 
 ## Go in 2009
 
-I started looking at Go before it was released publicly, and when it launched, I became an instant fan and an early user inside Google. I worked a bit on core libraries and was active in the community, helping users in the go-nuts mailing list early on and writing open-source libraries. Later on, I helped lead the [Go Meetup in Seattle](https://www.meetup.com/golang/) and we even organized a conference, [Go Northwest](https://www.youtube.com/channel/UCq9zCm9qiQ6glsz8B3kwsxw).
+I started looking at Go before it was released publicly, and when it launched, I became an instant fan and an early user inside Google. I worked a bit on core libraries and was active in the community, helping users in the go-nuts mailing list early on and writing open-source libraries. Later on, I helped lead the [Go Meetup in Seattle](https://www.meetup.com/golang/) and co-organized a beloved conference, [Go Northwest](https://www.youtube.com/channel/UCq9zCm9qiQ6glsz8B3kwsxw).
 
 ## First production tool
 
-To the best of my knowledge, I wrote the first production-critical tool and the first user-facing service in Go at Google.
+To the best of my knowledge, I wrote the first production-critical tool and, later on, the first user-facing service in Go at Google.
 
-The production tool was a service used to monitor the health of Google+'s Bigtable servers. That was one of my jobs as a SRE. In 2011, Andrew Gerrand gave [an interview to The Register](https://www.theregister.com/2011/05/05/google_go/?page=4) where he mentioned this work. He confirmed to me at the time that this referred to my project. I was thrilled!
+The production tool was a service used to monitor the health of Google+'s Bigtable servers. That was one of my jobs as a SRE. In 2011, Andrew Gerrand gave [an interview to The Register](https://www.theregister.com/2011/05/05/google_go/?page=4) where he mentioned this work. He confirmed to me at the time that this referred to my project. I was thrilled! He said this in the interview:
 
 > _"Google has people who administer apps and services, and they need to, say, write tools that say scrape a few thousand machines statuses and aggregate the data," he says. "Previously, these operations people would write these in Python, but they're finding that Go is much faster in terms of performance and time to actually write the code."_
 
 Go was indeed faster to run and faster to write. Most importantly, it felt _fun to use_. It made me more productive, so I got hooked!
 
-### Go’s team was exceptional
+### Go’s secret sauce
 
 At the time, Go had many missing pieces. It couldn't talk to Google’s internal infrastructure properly, so in order to do anything useful, we still had to build libraries for talking to everything. That was a very unique opportunity for me. As an early adopter of those early libraries and an engineered focused in production systems, I learned about how every system worked internally. I wrote a global lock library in Go (just a convenient wrapper for an existing library), some minor utilities here and there, and worked with the Go team to fix many bugs. I submitted occasional patches but, for the most part, I was just a user. I reported issues I'd find, and they fixed them.
 
-At the time, the Go’s team focus was on external users. All their attention was on releasing Go 1.0. It was a small team with few resources, but they were exceptional engineers and supported internal users very well. The internal mailing list was very active, and they adopted very robust internal processes to make things run smoothly. Whenever they released a new candidate version of Go, they would rebuild all internal projects with the new version and re-run our tests to make sure things were OK. They always did things the right way.
+At the time, the Go’s team focus was on external users. All their attention was on releasing Go 1.0. It was a small team with few resources, but their "secret sauce" is that they were exceptional engineers and the team was very productive. Somehow, they supported internal users very well even though their time was so limited. The internal mailing list was very active with googlers mostly playing around with Go for side-projects, but the Go team adopted very robust internal processes to make things run smoothly. They reviewed everyone's code carefully and helped build a strong internal code quality culture. Whenever they released a new candidate version of Go, they would rebuild all internal projects with the new version and re-run our tests to make sure things were OK. They always did things the right way.
 
 ### Initial Production Lessons
 
-A few months later I wrote the first user-facing service in Go at Google. It was a simple RPC service. Let me clarify that by user-facing I mean that if it stopped working many user-facing products would stop working. 
+A few months later I wrote the first user-facing service in Go at Google. By user-facing I mean that if it stopped working many user-facing products would stop working. It was a simple RPC service, but it was used by all Google messaging services.
 
-This service converts data to and from [JID format](https://en.wikipedia.org/wiki/JID_(Jabber)) based on internal user ids obtained from another RPC service. It should obviously have been just a library, but this was Google - no problem was ever solved with just a library :). The service was simple but it was massive, doing hundreds of thousands of requests per second at the time. It was critical to the core of Google’s messaging services that powered Android, Hangouts and other products.
+This service converted data to and from [JID format](https://en.wikipedia.org/wiki/JID_(Jabber)) based on internal user ids obtained from another RPC service. The service was simple but it was massive, doing hundreds of thousands of requests per second at the time. It was critical to the core of Google’s messaging services that powered Android, Hangouts and other products.
 
 This migration was a very important test bed for Go at Google. Critically, it gave us an incredible base to compare the performance of Go vis-a-vis our other production languages - specifically Java. This service was replacing a Java-based one that was difficult to maintain (not because of Java but for other reasons) so we ran both of them at the same time with real production traffic and compared their performance closely.
 
