@@ -42,17 +42,17 @@ This service converted data to and from [JID format](https://en.wikipedia.org/wi
 
 This migration was a very important test bed for Go at Google. Critically, it gave us an incredible base to compare the performance of Go vis-a-vis our other production languages - specifically Java. This service was replacing a Java-based one that was difficult to maintain (not because of Java but for other reasons) so we ran both of them at the same time with real production traffic and compared their performance closely.
 
-I remember well the lessons we got from that first large-scale experiment: Go used more CPU cores than Java to serve the same traffic, but the garbage collection (GC) pauses were basically non-existent. As an SRE that fought with the JVM for years to reduce the impact of GC in tail latency, that was very promising to see. The Go team was happy with that result but they weren’t surprised: Go was just doing what it was designed to do!
+We learned important lessons from that first large-scale experiment: Go used more CPU cores than Java to serve the same traffic, but the garbage collection (GC) pauses were extremely short. As an SRE that worked hard to reduce GC pauses to improve tail latency in user-facing services, that was very promising to see. The Go team was happy with that result but they weren’t surprised: Go was just doing what it was designed to do!
 
-In fact, years later when the [SRE leadership officially reviewed Go’s readiness for production](https://www.linkedin.com/pulse/language-policy-google-lets-go-jeremy-manson-ffmac/?trackingId=8vWpNw4USImSRBV7MXwi%2BQ%3D%3D) and asked the Go team to ensure Go had good GC performance, it was largely pro-forma. Go proved early on that Go had exceptional GC performance, and it keeps getting better.
+In fact, years later when the [SRE leadership officially reviewed Go’s readiness for production](https://www.linkedin.com/pulse/language-policy-google-lets-go-jeremy-manson-ffmac/) and asked the Go team to ensure Go had good GC performance, I think it was largely pro-forma. Go had proved early on that Go had exceptional GC performance, and it kept getting better over the years.
 
 ### Missing internal libraries
 
-In those early days, before [flywheel](https://research.google/pubs/flywheel-googles-data-compression-proxy-for-the-mobile-web/), before the [dl.google.com](http://dl.google.com/) service, before [Vitess](https://vitess.io/), Go was ignored by most of the engineers at Google, for good reason. If you needed to ship a product to users, you would first have to write the basic building blocks that let you connect to other services at Google. That was a non-starter for most. 
+In those early days, before [flywheel](https://research.google/pubs/flywheel-googles-data-compression-proxy-for-the-mobile-web/), before the [dl.google.com](http://dl.google.com/) service, before [Vitess](https://vitess.io/), Go was ignored by most of the engineers at Google. If someone wanted to ship a product to users, they would first have to write the basic building blocks that let them connect to other services at Google. That was a non-starter for most. 
 
 The lower-level libraries for the lock service  (chubby) and the RPC system (stubby) popped up relatively quickly (again, the Go team was **extremely** good), the most important libraries at Google were the interfaces with our storage systems: Bigtable, Megastore, Spanner, Colossus. If you wanted to read or write data, you basically couldn’t use Go yet. But, slowly, the Go team, sometimes in partnership with core infrastructure teams, started to tackle this challenge.
 
-We never got Megastore in Go, because Spanner was close to being production-ready, but, one by one, they eventually created libraries for Bigtable, Colossus and even Spanner. That was a major achievement.
+One by one, they eventually created libraries for Bigtable, Colossus and even Spanner (not Megastore, since it was largely a library that was replaced by Spanner). That was a major achievement.
 
 Usage at Google was still limited but our community was growing. I gave the first official **Introduction to Go** **Programming** class at Google and helped people in Zurich find interesting projects to work in Go. Around this time I finally got “readability” in Go, and later joined the Go readability team.
 
