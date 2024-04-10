@@ -74,7 +74,7 @@ terms of performance and time to actually write the code."*
 Go was indeed faster to run and faster to write. Most importantly, it
 felt *fun to use*. It made me more productive, so I got hooked!
 
-### Low-level libraries: LOAS, Stubby
+## Low-level libraries: LOAS, Stubby
 
 When Go started, it couldn't talk to Google's internal infrastructure.
 
@@ -136,7 +136,7 @@ add Go to the set of generated code for each service. This served as a
 silly but fun measure of progress for our community since we could count
 the number of instances of the "enable Go" flags in the code base.
 
-### Influencing the Global Master Selection and Executing Bigtable Drainage
+## Influencing the Global Master Selection and Executing Bigtable Drainage
 
 As an early adopter of those early libraries and an engineer focused in
 production systems, I was able to learn how internal systems worked. I
@@ -189,7 +189,7 @@ Whenever they released a new candidate version of Go, they would rebuild
 all internal projects with the new version and re-run our tests to make
 sure things were OK. They always did things the right way.
 
-### Initial Insights from JID Proxy Deployment in Production
+## Initial Insights from JID Proxy Deployment in Production
 
 A few months later I wrote the first user-facing service in Go at
 Google. By user-facing I mean that if it stopped working many
@@ -254,7 +254,7 @@ Google and helped people in Zurich find interesting projects to work in
 Go. Around this time I finally got "readability" in Go, and later joined
 the Go readability team.
 
-### The need for Site Reliability Engineers to guide application functionality
+## The need for Site Reliability Engineers to guide application functionality
 
 The other thing missing in Go were production-related features that we
 learned over the years were necessary for production teams. That is, if
@@ -444,7 +444,7 @@ Python. I don't know if this is now seen at Google as something
 dictatorial, but at the time I think it just felt like good org-wide
 communication and decision-making.
 
-### Go Production Platform and explosive growth
+## Go Production Platform and explosive growth
 
 Things accelerated quickly after that. We created a production platform
 that had strong support for Go since the early days and replaced a lot
