@@ -12,7 +12,7 @@ draft = false
 
 Recently, [Jeremy Mason](https://www.linkedin.com/pulse/language-policy-google-lets-go-jeremy-manson-ffmac/?trackingId=8vWpNw4USImSRBV7MXwi%2BQ%3D%3D) and [Sameer Ajmani](https://www.linkedin.com/pulse/gos-early-growth-2012-2016-sameer-ajmani-oxtjc/) wrote about the saga to make Go one of Google’s internal languages. 
 
-I thought I would write about the perspective of an SRE, framework developer and early adopter.
+I thought I would write about the perspective of an SRE, framework developer and early adopter. All information I'm sharing is related to systems that Google already documented publicly, so I don't think I'm revealing any secrets. There are some important parts of this story (e.g: envelope) that I haven't seen mentioned elsewhere so I won't discuss them.
 
 ## Go in 2009
 
@@ -22,19 +22,44 @@ I started looking at Go before it was released publicly, and when it launched, I
 
 To the best of my knowledge, I wrote the first production-critical tool and, later on, the first user-facing service in Go at Google.
 
-The production tool was a service used to monitor the health of Google+'s Bigtable servers. That was one of my jobs as a SRE. In 2011, Andrew Gerrand gave [an interview to The Register](https://www.theregister.com/2011/05/05/google_go/?page=4) where he mentioned this work. He confirmed to me at the time that this referred to my project. I was thrilled! He said this in the interview:
+The first one was a service used to monitor the health of [Google+](https://en.wikipedia.org/wiki/Google%2B)'s [Bigtable](https://en.wikipedia.org/wiki/Bigtable) servers. That was one of my jobs as a SRE. Bigtable had detailed internal stats about the performance of each tablet, but sometimes we needed to understand _why_ a certain tablet was so overloaded and what was happening elsewhere in the system, so we could understand the root causes. We needed to collect that data over time and analyse it. So I built a crawler that would inspect many thousands of servers and present detailed stats in a global dashboard.
+
+In 2011, Andrew Gerrand gave [an interview to The Register](https://www.theregister.com/2011/05/05/google_go/?page=4) where he mentioned this work. He confirmed to me at the time that this referred to my project. I was thrilled! He said this in the interview:
 
 > _"Google has people who administer apps and services, and they need to, say, write tools that say scrape a few thousand machines statuses and aggregate the data," he says. "Previously, these operations people would write these in Python, but they're finding that Go is much faster in terms of performance and time to actually write the code."_
 
 Go was indeed faster to run and faster to write. Most importantly, it felt _fun to use_. It made me more productive, so I got hooked!
 
-### Go’s secret sauce
+### Low-level libraries: LOAS, Stubby
 
-At the time, Go had many missing pieces. It couldn't talk to Google’s internal infrastructure properly, so in order to do anything useful, we still had to build libraries for talking to everything. That was a very unique opportunity for me. As an early adopter of those early libraries and an engineered focused in production systems, I learned about how every system worked internally. I wrote a global lock library in Go (just a convenient wrapper for an existing library), some minor utilities here and there, and worked with the Go team to fix many bugs. I submitted occasional patches but, for the most part, I was just a user. I reported issues I'd find, and they fixed them.
+When Go started, it couldn't talk to Google’s internal infrastructure.
+
+First, the team had to build a protocol-buffers-based [stubby RPC](https://cloud.google.com/blog/products/gcp/grpc-a-true-internet-scale-rpc-framework-is-now-1-and-ready-for-production-deployments) system. This required implementing [LOAS](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45728.pdf) to encrypt and authenticate communication with remote nodes, and [Chubby](https://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf) for name resolution (similar to [etcd](https://etcd.io/docs/v3.3/faq/), used in kubernetes). 
+
+Stubby and Chubby are notoriously complex. Stubby requires a complicated state machine for managing connections but most of the heavy lifting is done by Chubby, which needs to provide a consistent view of the world even when [Borg](https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/) nodes run out of CPU, or are temporarily disconnected from the network because someone is running a MapReduce and eating all your rack's switch bandwidth.  It's easy to end-up with deadlocks or reliability issues.
+
+Due to [Hyrum's law](https://www.hyrumslaw.com/), which states that <em>all observable behaviors of your system will be depended on by somebody</em>, the team had to make sure to match the exact behaviour expected by the existing production network and watch out for corner cases. For example, healthchecking is notoriously easy to get wrong, and should <em>not be too strict</em> otherwise they leave the door open for cascading failures when a part of the network is temporarily overloaded or disconnected from the other part. Other tricky distributed system features that had to be implemented, such as backend subsetting and load-balancing. We needed to diagnose when things went wrong, so logging and metrics libraries were added early on.
+
+In order to find which host:port to talk to, services used Chubby for name resolution. It worked as a fully-consistent storage system for small amounts of data, and its most used feature was to resolve [BNS](https://sre.google/sre-book/production-environment/) addresses - similar to what you would see today with etcd in kubernetes.
+
+Systems sent and received data to and from other services using the Stubby protocol. In Stubby (like in [gRPC](https://grpc.io/)), messages were encoded using the protocol-buffers wire format. Creating protocol-buffers payload at runtime using reflection would be too slow and resource intensive. Engineers would also miss the lack of feedback from a strong-typed system. For those reasons, Google used generated code libraries for all languages. Luckily, protocol buffers are language-agnostic. The team just had to write [Blaze](https://bazel.build/basics/artifact-based-builds) extensions to the existing build system logic and, voila, we had high-quality client library code for all internal RPC services. 
+
+Curiously, there is a small incremental build time cost to generate code for another language, and Google had many, many thousands of RPC services. Therefore, it was decided that owners of each RPC service had to opt-in to allow the build system to generate Go code for their particular service. Although a little bit bureacratic, over time we saw thousands of CLs (google's equivalent Pull Requests) flying around to add Go to the set of generated code for each service. This served as a silly but fun measure of progress for our community since we could count the number of instances of the "enable Go" flags in the code base.
+
+
+## Global master election and draining bigtables
+
+As an early adopter of those early libraries and an engineer focused in production systems, I was able to learn how internal systems worked. I helped debug and fix many weird problems. Over time, I acquired the confidence to build systems to automate operational SRE work. Noticing that most of the user-facing outages on our services happened in the storage layer (Bigtable or Colossus), I had the idea to create a control system that would monitor the health of Bigtable partitions and carefully drain them in [GSLB](https://sre.google/workbook/managing-load/) when it detected problems. At the time, when an outage occurred, an SRE would get paged and, after confirming it was a storage issue, they would simply drain the cluster and go back to sleep. 
+
+I wanted to replace this manual whackamole with a proper control system. Draining traffic could lead to cascading failures so it was a dangerous operation. At the time, most SREs did not want to take this kind of risk with an automated system. Luckily, I had a good team. They carefully reviewed my proposal, provided lots of feedback about potential failure modes, and we eventually came up with a design that we were confident enough with. We needed to carefully aggregate information from different monitor systems (which could fail or provide incorrect data), use the global load balancer to safely traffic away from a cluster, then finally open a ticket in [Buganizer](https://www.freecodecamp.org/news/messing-with-the-google-buganizer-system-for-15-600-in-bounties-58f86cc9f9a5/) for the oncall SRE to clean-up during work hours.
+
+The system needed multiple replicas to be always on to react to an outage, but it was critical that a single replica remained live at a time. To support that, I wrote a global "master election" library for Go that would ensure a single replica of the system would be active at a time. It used the global chubby lock service to provide a high-level library to tell the application to start operating or shut itself down if it can't prove that we hold the "global lock".
+
+To support this work, I also wrote minor utilities here and there, and worked with the Go team to fix bugs. I reported issues I'd find, and they fixed them.
 
 At the time, the Go’s team focus was on external users. All their attention was on releasing Go 1.0. It was a small team with few resources, but their "secret sauce" is that they were exceptional engineers and the team was very productive. Somehow, they supported internal users very well even though their time was so limited. The internal mailing list was very active with googlers mostly playing around with Go for side-projects, but the Go team adopted very robust internal processes to make things run smoothly. They reviewed everyone's code carefully and helped build a strong internal code quality culture. Whenever they released a new candidate version of Go, they would rebuild all internal projects with the new version and re-run our tests to make sure things were OK. They always did things the right way.
 
-### Initial Production Lessons
+### Initial Production Lessons with the JID proxy
 
 A few months later I wrote the first user-facing service in Go at Google. By user-facing I mean that if it stopped working many user-facing products would stop working. It was a simple RPC service, but it was used by all Google messaging services.
 
@@ -98,3 +123,4 @@ Things accelerated quickly after that. We created a production platform that had
 While I was just a user of the language, the experience of watching a project go  from zero to being a top-10 programming language has taught me a lot. I could see with my own eyes that a strong team, surrounded by a strong community, can really make **big** things.
 
 Just Go!
+
