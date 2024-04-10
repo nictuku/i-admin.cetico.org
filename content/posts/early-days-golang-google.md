@@ -352,19 +352,27 @@ everything would look the same in code, but you magically got logging,
 instrumentation, load-shedding, traffic management and even per-request
 experimentation support, out of the box.
 
-We had to make significant changes to Google's internal RPC libraries
-and even to the build system, but this worked really well. We called it
-a server "toolkit" to avoid confusing, and it the  became the Right Way
-to build production-ready systems at Google. People often cite our
-internal server framework ) in their LinkedIn profile :). It was called
-Goa, not to be confused with the unrelated external [Goa
-framework](https://goa.design/). Here\'s an example from someone\'s
-LinkedIn profile:
+In order to create this magic library that made services better, we had to
+make significant changes to Google's internal RPC libraries and even to the
+build system - to enable our framework team to create arbitrary "extensions"
+to the RPC systems that would operate seamlessly without significant performance
+overhead when receiving and sending requests.
+
+The result was worth it. It worked really well. Our project made services significantly
+easier to manage, without imposing a programming style that was different from what the
+Go team wanted. We called it a server "toolkit" to avoid confusion, and it the 
+became the Right Way to build production-ready systems at Google. People often
+cite our internal server framework ) in their LinkedIn profile :). It was
+called Goa, not to be confused with the unrelated external [Goa
+framework](https://goa.design/). Here\'s an example from someone\'s LinkedIn
+profile:
 
 ![Goa mentioned in people's LinkedIn profile](/images/goa.png)
 
-The production-ready Go toolkit removed a major roadblock for Go's
-internal growth, but growth didn't quite happen yet. Go needed a killer
+With its production-readiness features, our Go toolkit removed a major
+roadblock for Go's internal growth. Engineers could now be confident that their
+Go projects would perform as well as, and be as debuggable as, their older Java
+and C++ siblings. That said, growth didn't quite happen yet. Go needed a killer
 use-case to become popular at Google.
 
 ### Go\'s Adoption Across Several SRE Teams
