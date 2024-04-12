@@ -65,16 +65,10 @@ referred to my project. I was thrilled! He said this in the interview:
 > would write these in Python, but they're finding that Go is much
 > faster in terms of performance and time to actually write the code."*
 
-*"Google has people who administer apps and services, and they need to,
-say, write tools that say scrape a few thousand machines statuses and
-aggregate the data," he says. "Previously, these operations people would
-write these in Python, but they're finding that Go is much faster in
-terms of performance and time to actually write the code."*
-
 Go was indeed faster to run and faster to write. Most importantly, it
 felt *fun to use*. It made me more productive, so I got hooked!
 
-## Low-level libraries: LOAS, Stubby
+## Low-level libraries: node authentication and RPCs
 
 When Go started, it couldn't talk to Google's internal infrastructure.
 
@@ -362,7 +356,7 @@ The result was worth it. It worked really well. Our project made services signif
 easier to manage, without imposing a programming style that was different from what the
 Go team wanted. We called it a server "toolkit" to avoid confusion, and it the 
 became the Right Way to build production-ready systems at Google. People often
-cite our internal server framework ) in their LinkedIn profile :). It was
+cite our internal server framework in their LinkedIn profile :). It was
 called Goa, not to be confused with the unrelated external [Goa
 framework](https://goa.design/). Here\'s an example from someone\'s LinkedIn
 profile:
@@ -473,18 +467,10 @@ and facilitating its adoption by several big tech companies including
 Apple, Facebook, and Docker.  
 
 Despite Rust having an extensive range of features, the widespread
-acceptance of Go across various industries testifies to its exceptional
-capabilities. Go demonstrates that powerful software doesn\'t
-necessarily need to be complicated.  
-
-From its creation in 2009 by a small team at Google to its position
-among the top ten programming languages, Go\'s journey is a significant
-chapter in the history of modern programming. This journey inspires
-tech-business founders aiming to create faster, more efficient, and
-portable applications.  
+acceptance of Go across various industries shows that powerful software
+doesn\'t necessarily need to be complicated.  
 
 Looking back, it\'s clear that while our journey was filled with
 challenges, each twist and turn, each adjustment and advancement, was
-key to shaping today\'s Go. As we move forward, we hold onto the
-valuable lessons from the past, the assurance of the present, and the
-anticipation for what\'s to come.
+key to shaping today\'s Go. As the community moves forward, I am excited to see
+where we Go next.
