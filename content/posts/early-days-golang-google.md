@@ -1,5 +1,5 @@
 +++
-title = "From Ground Zero to Production: My Journey with Go at Google"
+title = "From Ground Zero to Production: Go's Journey at Google"
 date = 2024-03-08
 author = "Yves Junqueira"
 description = "An exploration of Go's adoption at Google from the perspective of an SRE and early adopter, detailing the challenges and milestones of integrating Go into production systems."
