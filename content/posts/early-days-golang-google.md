@@ -474,3 +474,5 @@ Looking back, it\'s clear that while our journey was filled with
 challenges, each twist and turn, each adjustment and advancement, was
 key to shaping today\'s Go. As the community moves forward, I am excited to see
 where we Go next.
+
+<i>Go gopher was designed by Renee French and licensed under the Creative Commons 3.0 Attributions license.</i>
