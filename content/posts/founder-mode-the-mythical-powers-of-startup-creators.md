@@ -1,10 +1,10 @@
 +++
 title = "Founder Mode: The Mythical Powers of Startup Creators"
 date = 2024-09-02T10:10:00.000Z
-draft = true
+draft = false
 author = "Yves Junqueira"
 description = ""
-categories = [ ]
+categories = [ "Humor", "Startups" ]
 tags = [ "" ]
 +++
 In the realm of startups, there exists a phenomenon so extraordinary, so inexplicable, that it defies all conventional wisdom. It has been recently called "Founder Mode." It's a state of being that transcends the mundane constraints of reality, granting its bearers—the fabled startup founders—abilities that border on the supernatural.
