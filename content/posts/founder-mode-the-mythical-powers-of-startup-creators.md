@@ -9,7 +9,7 @@ tags = [ "" ]
 +++
 In the realm of startups, there exists a phenomenon so extraordinary, so inexplicable, that it defies all conventional wisdom. It has been recently called "Founder Mode." It's a state of being that transcends the mundane constraints of reality, granting its bearers—the fabled startup founders—abilities that border on the supernatural.
 
-To understand Founder Mode, we must first cast aside our pedestrian notions of causality and human limitations. The idea that startup success is merely the result of effective leadership, ample funding, and favorable market conditions is not just wrong—it's dangerously misleading.
+To understand Founder Mode, we must first cast aside our pedestrian notions of causality and human limitations. The idea that startup success is merely the result of *effective leadership, ample funding, and favorable market conditions* is not just wrong—it's dangerously misleading.
 
 Consider the Founder in their natural habitat: the silicon valley, in an open-plan office, bathed in the glow of MacBook screens. To the untrained eye, they might appear to be simply typing furiously or gesticulating wildly during a video call. But those of us who have glimpsed behind the veil know better. What we're witnessing is nothing less than the bending of the laws of physics.
 
