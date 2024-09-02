@@ -1,20 +1,19 @@
 +++
 title = "From Ground Zero to Production: Go's Journey at Google"
-date = 2024-03-08
+date = 2024-03-08T00:00:00.000Z
 author = "Yves Junqueira"
 description = "An exploration of Go's adoption at Google from the perspective of an SRE and early adopter, detailing the challenges and milestones of integrating Go into production systems."
-categories = ["Programming", "Go", "History"]
-tags = ["golang", "google", "programming history"]
+categories = [ "Programming", "Go", "History" ]
+tags = [ "golang", "google", "programming history" ]
 draft = false
 +++
-
 ![The Early Days of Go at Google](/images/go.png)
 
 Recently, [Jeremy
 Mason](https://www.linkedin.com/pulse/language-policy-google-lets-go-jeremy-manson-ffmac/?trackingId=8vWpNw4USImSRBV7MXwi%2BQ%3D%3D)
 and [Sameer
 Ajmani](https://www.linkedin.com/pulse/gos-early-growth-2012-2016-sameer-ajmani-oxtjc/)
-wrote about the saga to make Go one of Google's internal languages. [Go
+wrote about the saga to make Go one of Google's internal languages.&nbsp;[Go
 is currently the 8th most popular programming language in the
 world](https://www.infoworld.com/article/3712690/go-language-hits-top-10-in-the-tiobe-index.html)
 and it is still growing, so people are interested to learn about the
@@ -35,7 +34,7 @@ loved its simplicity.
 
 I worked a bit on core libraries and was active in the community,
 helping users in the go-nuts mailing list early on and writing
-open-source libraries. Later on, I helped lead the [Go Meetup in
+open-source libraries. Later on, I helped lead the&nbsp;[Go Meetup in
 Seattle](https://www.meetup.com/golang/) and co-organized a beloved
 conference, [Go
 Northwest](https://www.youtube.com/channel/UCq9zCm9qiQ6glsz8B3kwsxw).
@@ -187,11 +186,11 @@ sure things were OK. They always did things the right way.
 
 A few months later I wrote the first user-facing service in Go at
 Google. By user-facing I mean that if it stopped working many
-user-facing products would stop working. It was a simple RPC service,
+user-facing products would stop working.&nbsp;It was a simple RPC service,
 but it was used by all Google messaging services.
 
 This service converted data to and from [JID
-format](https://en.wikipedia.org/wiki/JID_(Jabber)) based on internal
+format](https://en.wikipedia.org/wiki/JID_&#40;Jabber&#41;) based on internal
 user ids obtained from another RPC service. The service was simple but
 it was massive, doing hundreds of thousands of requests per second at
 the time. It was critical to the core of Google's messaging services
@@ -228,9 +227,9 @@ before the [dl.google.com](https://dl.google.com/) service, before
 [Vitess](https://vitess.io/), Go was ignored by most of the engineers at
 Google. If someone wanted to ship a product to users, they would first
 have to write the basic building blocks that let them connect to other
-services at Google. That was a non-starter for most. 
+services at Google. That was a non-starter for most.
 
-The lower-level libraries for the lock service  (chubby) and the RPC
+The lower-level libraries for the lock service&nbsp; (chubby) and the RPC
 system (stubby) popped up relatively quickly (again, the Go team was
 **extremely** good), the most important libraries at Google were the
 interfaces with our storage systems: Bigtable, Megastore, Spanner,
@@ -295,17 +294,17 @@ The model where SRE co-owned the client libraries worked very well in
 pratice, and over time we learned that it was a great idea to also add
 traffic and load management to these libraries.
 
--   What do you do to incoming RPCs when your system is starting to
-    overload?
--   Should you hold those requests in a queue, or immediately reject
-    them?
--   What metrics should you use to determine that your system is
-    overloaded?
--   How can you avoid entering a cascading failure when too many parts
-    of the system think they are overloaded?
+* What do you do to incoming RPCs when your system is starting to
+  overload?
+* Should you hold those requests in a queue, or immediately reject
+  them?
+* What metrics should you use to determine that your system is
+  overloaded?
+* How can you avoid entering a cascading failure when too many parts
+  of the system think they are overloaded?
 
 Alejo Forero Cuervo wrote about the lessons learned in the SRE book
-chapter [Handling
+chapter&nbsp;[Handling
 Overload](https://sre.google/sre-book/handling-overload/), it's worth
 reading. One by one, we added careful logic to the libraries to
 automatically set these parameters based on experience and internal
@@ -354,22 +353,22 @@ overhead when receiving and sending requests.
 
 The result was worth it. It worked really well. Our project made services significantly
 easier to manage, without imposing a programming style that was different from what the
-Go team wanted. We called it a server "toolkit" to avoid confusion, and it the 
+Go team wanted. We called it a server "toolkit" to avoid confusion, and it the&nbsp;
 became the Right Way to build production-ready systems at Google. People often
 cite our internal server framework in their LinkedIn profile :). It was
 called Goa, not to be confused with the unrelated external [Goa
-framework](https://goa.design/). Here\'s an example from someone\'s LinkedIn
+framework](https://goa.design/). Here's an example from someone's LinkedIn
 profile:
 
 ![Goa mentioned in people's LinkedIn profile](/images/goa.png)
 
-With its production-readiness features, our Go toolkit removed a major
+With its production-readiness features, our Go&nbsp;toolkit removed a major
 roadblock for Go's internal growth. Engineers could now be confident that their
 Go projects would perform as well as, and be as debuggable as, their older Java
 and C++ siblings. That said, growth didn't quite happen yet. Go needed a killer
 use-case to become popular at Google.
 
-### Go\'s Adoption Across Several SRE Teams
+### Go's Adoption Across Several SRE Teams
 
 At the time, the SRE team I was part of was a special place at Google,
 the Social SRE team. We had great engineers and exceptional management
@@ -388,13 +387,13 @@ Bigtable cluster if it noticed something wrong.
 There were also other projects, in Java and C++, related to traffic and
 load management, led by other senior engineers. This innovative
 environment attracted talent and we continued to deliver good results,
-so our SRE team grew. 
+so our SRE team grew.
 
 Our engineering director [Acacio
 Cruz](https://www.linkedin.com/in/acacio/) (responsible for many of the
 positive things happening with our team, along with his peers in
 Mountain View) was very attuned to engineering efficiency: are we using
-our engineering time for the most impactful things?  He understood that
+our engineering time for the most impactful things?&nbsp; He understood that
 there is efficiency in standardization, and he saw that our engineers
 were happy and productive. He had the idea of pushing for Go to become
 the tool of choice for any automation within our team. The proposal was
@@ -412,17 +411,17 @@ maintain over time. Google SREs enjoyed Python, we wrote a ton of Python
 code. Unfortunately, at the time, the lack of types and compile-time
 syntax error checks caused many hard-to-fix issues:
 
-1.  When you work on a project that someone else started, that project
-    may or may not have good test coverage. It's difficult to add tests
-    for code you didn't write. You don't really know what is being used
-    and how. So you end up testing too many things or testing too
-    little. In production-critical tools we can't take risks when making
-    changes.
-2.  At the time, people generally wrote code in one moment and ran the
-    tests in another moment. If you only realize you have syntax errors
-    when you run tests, maybe you already context switched to doing
-    something else, so now you have to go back and fix it. That wastes
-    time and adds uncertainty.
+1. When you work on a project that someone else started, that project
+   may or may not have good test coverage. It's difficult to add tests
+   for code you didn't write. You don't really know what is being used
+   and how. So you end up testing too many things or testing too
+   little. In production-critical tools we can't take risks when making
+   changes.
+2. At the time, people generally wrote code in one moment and ran the
+   tests in another moment. If you only realize you have syntax errors
+   when you run tests, maybe you already context switched to doing
+   something else, so now you have to go back and fix it. That wastes
+   time and adds uncertainty.
 
 As more and more SREs started to write automation in Go, it became clear
 that those teams were happy and productive and were less likely to get
@@ -448,31 +447,31 @@ platforms surfaced. Go and our server framework became ubiquitous. I
 eventually left Google but I remember those days with joy.
 
 While I was just a user of the language, the experience of watching a
-project go  from zero to being a top-10 programming language has taught
+project go&nbsp; from zero to being a top-10 programming language has taught
 me a lot. I could see with my own eyes that a strong team, surrounded by
 a strong community, can really make **big** things.
 
-## Observing Go\'s Ascend to Prominence
+## Observing Go's Ascend to Prominence
 
 My time working with Go programming at Google has been a game-changer,
-giving me a great understanding of the project\'s technical side and how
+giving me a great understanding of the project's technical side and how
 a world-famous team operates. As the project went on, I could clearly
 see how Go can make project and team scaling easier.
 
-Go\'s emphasis on minimalistic design facilitated uniform coding, making
+Go's emphasis on minimalistic design facilitated uniform coding, making
 it easy to integrate new programmers into the project, a feature
 particularly useful in projects on a tight schedule. As the project
 grew, new libraries and toolkits also emerged, increasing its popularity
 and facilitating its adoption by several big tech companies including
-Apple, Facebook, and Docker.  
+Apple, Facebook, and Docker.
 
 Despite Rust having an extensive range of features, the widespread
 acceptance of Go across various industries shows that powerful software
-doesn\'t necessarily need to be complicated.  
+doesn't necessarily need to be complicated.
 
-Looking back, it\'s clear that while our journey was filled with
+Looking back, it's clear that while our journey was filled with
 challenges, each twist and turn, each adjustment and advancement, was
-key to shaping today\'s Go. As the community moves forward, I am excited to see
+key to shaping today's Go. As the community moves forward, I am excited to see
 where we Go next.
 
-<i>Go gopher was designed by Renee French and licensed under the Creative Commons 3.0 Attributions license.</i>
+*Go gopher was designed by Renee French and licensed under the Creative Commons 3.0 Attributions license.*
