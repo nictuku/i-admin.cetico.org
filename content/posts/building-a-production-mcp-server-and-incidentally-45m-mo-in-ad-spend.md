@@ -1,5 +1,7 @@
 +++
 title = "Building a production MCP server (and, incidentally, $45M/mo in ad spend)"
+date = 2025-08-13T00:00:00Z
+draft = false
 published = true
 description = "An engineer’s story of turning a scrappy helper into a production Model Context Protocol server—stack, tradeoffs, and what I shipped. Side note: it now runs a lot of Meta ads."
 tags = "ai, python, marketing, mcp"
@@ -98,7 +100,7 @@ I launched paid plans this Monday on [Pipeboard.co](https://pipeboard.co) while 
 * **Technical builders**: who want a programmable, automatable way to run Meta ads with MCP-native tooling.
 * **Marketers and agencies**: who want practical insights and simpler workflows without wrestling with the Ads Manager UI.
 
-### Why it took off
+### Why it took off (I think)
 
 * **Engineering depth → quality and outcomes**: I’ve been building software for [20 years](https://www.linkedin.com/in/yvesjunqueira/), including 10 at Google. That background let me relentlessly optimize reliability and overall quality. It just works—and that helps ads perform better and more efficiently.
 * **Word of mouth from a “feels like magic” experience**: When a product consistently delivers results and removes friction, people share it with friends and colleagues. Most growth came from organic recommendations.

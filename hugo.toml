@@ -22,6 +22,7 @@ paginate=3 # articles per page
 	subtitle = "Yves Junqueira's blog"
 	mathjax = true # enable MathJax support
 	katex = true # enable KaTeX support
+	mainSections = ["posts"]
 
 # Social Tags
 
