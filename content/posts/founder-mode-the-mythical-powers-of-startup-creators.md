@@ -1,7 +1,7 @@
 +++
 title = "Founder Mode: The Mythical Powers of Startup Creators"
 date = 2024-09-02T10:10:00.000Z
-draft = false
+draft = true
 author = "Yves Junqueira"
 description = ""
 categories = [ "Humor", "Startups" ]
